@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>DrawingToolBar.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DrawingToolBar.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">gabriel</span><span class="s2">.</span><span class="s1">draw</span><span class="s2">.</span><span class="s1">view</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">gabriel</span><span class="s2">.</span><span class="s1">drawfx</span><span class="s2">.</span><span class="s1">ActionCommand</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">DrawingToolBar </span><span class="s0">extends </span><span class="s1">JToolBar </span><span class="s2">{</span>
+    <span class="s0">public </span><span class="s1">DrawingToolBar</span><span class="s2">(</span><span class="s1">ActionListener actionListener</span><span class="s2">){</span>
+
+
+
+        <span class="s3">//undo</span>
+        <span class="s1">JButton undoButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">();</span>
+        <span class="s1">undoButton</span><span class="s2">.</span><span class="s1">setIcon</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">getClass</span><span class="s2">().</span><span class="s1">getResource</span><span class="s2">(</span><span class="s4">&quot;/com/gabriel/draw/view/undo.jpg&quot;</span><span class="s2">)));</span>
+        <span class="s1">undoButton</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s1">ActionCommand</span><span class="s2">.</span><span class="s1">UNDO</span><span class="s2">);</span>
+        <span class="s1">undoButton</span><span class="s2">.</span><span class="s1">setToolTipText</span><span class="s2">(</span><span class="s4">&quot;Undo&quot;</span><span class="s2">);</span>
+        <span class="s1">undoButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s1">actionListener</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">undoButton</span><span class="s2">);</span>
+        <span class="s3">//add enable disable function to button to show if button avail or not</span>
+
+        <span class="s3">//redo</span>
+        <span class="s1">JButton redoButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">();</span>
+        <span class="s1">redoButton</span><span class="s2">.</span><span class="s1">setIcon</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">getClass</span><span class="s2">().</span><span class="s1">getResource</span><span class="s2">(</span><span class="s4">&quot;/com/gabriel/draw/view/redo.png&quot;</span><span class="s2">)));</span>
+        <span class="s1">redoButton</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s1">ActionCommand</span><span class="s2">.</span><span class="s1">REDO</span><span class="s2">);</span>
+        <span class="s1">redoButton</span><span class="s2">.</span><span class="s1">setToolTipText</span><span class="s2">(</span><span class="s4">&quot;Redo&quot;</span><span class="s2">);</span>
+        <span class="s1">redoButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s1">actionListener</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">redoButton</span><span class="s2">);</span>
+
+        <span class="s3">//line</span>
+        <span class="s1">JToggleButton lineButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JToggleButton</span><span class="s2">();</span>
+        <span class="s1">lineButton</span><span class="s2">.</span><span class="s1">setIcon</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">getClass</span><span class="s2">().</span><span class="s1">getResource</span><span class="s2">(</span><span class="s4">&quot;/com/gabriel/draw/view/Line.png&quot;</span><span class="s2">)));</span>
+        <span class="s1">lineButton</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s1">ActionCommand</span><span class="s2">.</span><span class="s1">LINE</span><span class="s2">);</span>
+        <span class="s1">lineButton</span><span class="s2">.</span><span class="s1">setToolTipText</span><span class="s2">(</span><span class="s4">&quot;Draw Line&quot;</span><span class="s2">);</span>
+        <span class="s1">lineButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s1">actionListener</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">lineButton</span><span class="s2">);</span>
+
+        <span class="s3">//rectangle</span>
+        <span class="s1">JToggleButton rectangleButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JToggleButton</span><span class="s2">();</span>
+        <span class="s1">rectangleButton</span><span class="s2">.</span><span class="s1">setIcon</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">getClass</span><span class="s2">().</span><span class="s1">getResource</span><span class="s2">(</span><span class="s4">&quot;/com/gabriel/draw/view/Rectangle.png&quot;</span><span class="s2">)));</span>
+        <span class="s1">rectangleButton</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s1">ActionCommand</span><span class="s2">.</span><span class="s1">RECT</span><span class="s2">);</span>
+        <span class="s1">rectangleButton</span><span class="s2">.</span><span class="s1">setToolTipText</span><span class="s2">(</span><span class="s4">&quot;Draw Rectangle&quot;</span><span class="s2">);</span>
+        <span class="s1">rectangleButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s1">actionListener</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">rectangleButton</span><span class="s2">);</span>
+
+        <span class="s3">//ellipse</span>
+        <span class="s1">JToggleButton ellipseButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JToggleButton</span><span class="s2">();</span>
+        <span class="s1">ellipseButton</span><span class="s2">.</span><span class="s1">setIcon</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">getClass</span><span class="s2">().</span><span class="s1">getResource</span><span class="s2">(</span><span class="s4">&quot;/com/gabriel/draw/view/ellipse.png&quot;</span><span class="s2">)));</span>
+        <span class="s1">ellipseButton</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s1">ActionCommand</span><span class="s2">.</span><span class="s1">ELLIPSE</span><span class="s2">);</span>
+        <span class="s1">ellipseButton</span><span class="s2">.</span><span class="s1">setToolTipText</span><span class="s2">(</span><span class="s4">&quot;Draw Ellipse&quot;</span><span class="s2">);</span>
+        <span class="s1">ellipseButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s1">actionListener</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">ellipseButton</span><span class="s2">);</span>
+
+        <span class="s3">//color</span>
+        <span class="s1">JButton colorButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">();</span>
+        <span class="s1">colorButton</span><span class="s2">.</span><span class="s1">setIcon</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">getClass</span><span class="s2">().</span><span class="s1">getResource</span><span class="s2">(</span><span class="s4">&quot;/com/gabriel/draw/view/Platte.png&quot;</span><span class="s2">)));</span>
+        <span class="s1">colorButton</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s4">&quot;color&quot;</span><span class="s2">);</span>
+        <span class="s1">colorButton</span><span class="s2">.</span><span class="s1">setToolTipText</span><span class="s2">(</span><span class="s4">&quot;Choose a Color&quot;</span><span class="s2">);</span>
+        <span class="s1">colorButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s1">actionListener</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">colorButton</span><span class="s2">);</span>
+
+
+
+
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
