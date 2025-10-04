@@ -1,5 +1,6 @@
 package com.gabriel.draw.view;
 
+import com.gabriel.draw.controller.ActionController;
 import com.gabriel.drawfx.ActionCommand;
 
 import javax.swing.*;
@@ -7,8 +8,8 @@ import java.awt.event.ActionListener;
 
 public class DrawingToolBar extends JToolBar {
     public DrawingToolBar(ActionListener actionListener){
-
-
+        //cast to ActionController to access setter methods
+        ActionController actionController = (ActionController) actionListener;
 
         //undo
         JButton undoButton = new JButton();
@@ -16,8 +17,9 @@ public class DrawingToolBar extends JToolBar {
         undoButton.setActionCommand(ActionCommand.UNDO);
         undoButton.setToolTipText("Undo");
         undoButton.addActionListener(actionListener);
+        actionController.setUndoButton(undoButton);
         add(undoButton);
-        //add enable disable function to button to show if button avail or not
+
 
         //redo
         JButton redoButton = new JButton();
@@ -25,6 +27,7 @@ public class DrawingToolBar extends JToolBar {
         redoButton.setActionCommand(ActionCommand.REDO);
         redoButton.setToolTipText("Redo");
         redoButton.addActionListener(actionListener);
+        actionController.setRedoButton(redoButton);
         add(redoButton);
 
         //line
@@ -33,6 +36,7 @@ public class DrawingToolBar extends JToolBar {
         lineButton.setActionCommand(ActionCommand.LINE);
         lineButton.setToolTipText("Draw Line");
         lineButton.addActionListener(actionListener);
+
         add(lineButton);
 
         //rectangle

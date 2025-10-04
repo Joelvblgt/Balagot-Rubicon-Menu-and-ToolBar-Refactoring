@@ -4,4 +4,6 @@ public enum DrawMode {
     Idle,
     MousePressed,
     MouseReleased,
+    Select,
+    Scaling
 }

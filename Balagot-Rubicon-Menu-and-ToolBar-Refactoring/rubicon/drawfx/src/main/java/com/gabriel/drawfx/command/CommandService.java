@@ -5,6 +5,15 @@ public class CommandService {
     static Stack<Command> undoStack = new Stack<Command>();
     static Stack<Command> redoStack = new Stack<Command>();
 
+    //checks if undo stack has any commands
+    public static boolean canUndo() {
+        return !undoStack.empty();
+    }
+
+    public static boolean canRedo() {
+        return !redoStack.empty();
+    }
+
     public static void ExecuteCommand(Command command) {
         command.execute();
         undoStack.push(command);

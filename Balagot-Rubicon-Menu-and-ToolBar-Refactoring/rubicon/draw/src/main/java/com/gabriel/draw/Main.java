@@ -31,18 +31,20 @@ public class Main {
         DrawingController drawingController = new DrawingController(appService, drawingView);
         drawingView.addMouseMotionListener(drawingController);
         drawingView.addMouseListener(drawingController);
-        drawingFrame.setContentPane(drawingView);
 
+        drawingFrame.setLayout(new BorderLayout());
+        drawingFrame.add(drawingToolBar, BorderLayout.NORTH);
+        drawingFrame.add(drawingView, BorderLayout.CENTER);
 
         drawingMenuBar.setVisible(true);
         drawingFrame.setJMenuBar(drawingMenuBar);
-        //jtoolbar and layout
-        drawingFrame.getContentPane().add(drawingToolBar, BorderLayout.PAGE_START);
 
 
 
         drawingFrame.setVisible(true);
         drawingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         drawingFrame.setSize(500,500);
+
+        ((ActionController) actionListener).initializeButtonStates();
     }
 }

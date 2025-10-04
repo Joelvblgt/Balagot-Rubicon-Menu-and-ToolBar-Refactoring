@@ -1,5 +1,6 @@
 package com.gabriel.draw.view;
 
+import com.gabriel.draw.controller.ActionController;
 import com.gabriel.drawfx.ActionCommand;
 import com.gabriel.drawfx.ShapeMode;
 import com.gabriel.drawfx.service.AppService;
@@ -17,6 +18,8 @@ public class DrawingMenuBar extends JMenuBar {
 
     public DrawingMenuBar( ActionListener actionListener ){
         super();
+        ActionController actionController = (ActionController) actionListener;
+
         JMenuItem lineMenuItem = new JMenuItem("Line");
         JMenuItem rectangleMenuItem = new JMenuItem("Rectangle");
         JMenuItem ellipseMenuItem = new JMenuItem("Ellipse");
@@ -25,6 +28,7 @@ public class DrawingMenuBar extends JMenuBar {
         JMenuItem undoMenuItem = new JMenuItem("Undo");
         JMenuItem redoMenuItem = new JMenuItem("Redo");
         JMenuItem colorMenuItem = new JMenuItem("Color");
+        JMenuItem selectMenuItem = new JMenuItem("Select");
 
         JMenu editMenu = new JMenu("Edit");
         editMenu.setMnemonic(KeyEvent.VK_E);
@@ -33,16 +37,26 @@ public class DrawingMenuBar extends JMenuBar {
         undoMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK));
         undoMenuItem.addActionListener(actionListener); // use actionListener because DMB extends JMB not implements ActionListeners
         undoMenuItem.setActionCommand(ActionCommand.UNDO);
+        actionController.setUndoMenuItem(undoMenuItem);
         editMenu.add(undoMenuItem);
         //redo
         redoMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK));
         redoMenuItem.addActionListener(actionListener);
         redoMenuItem.setActionCommand(ActionCommand.REDO);
+        actionController.setRedoMenuItem(redoMenuItem);
         editMenu.add(redoMenuItem);
 
         JMenu drawMenu = new JMenu("Draw");
         drawMenu.setMnemonic(KeyEvent.VK_D);
         add(drawMenu); //
+
+
+        editMenu.addSeparator();
+        //select
+        selectMenuItem.setActionCommand(ActionCommand.SELECT);
+        selectMenuItem.addActionListener(actionListener);
+        selectMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
+        editMenu.add(selectMenuItem);
 
         //line
         drawMenu.add(lineMenuItem);

@@ -21,10 +21,11 @@ public class DrawingView extends JPanel {
 
     @Override
     public void paint(Graphics g) {
+        super.paint(g); // proper background clearing
         Drawing drawing = (Drawing) appService.getModel();
         for(Shape shape : drawing.getShapes()){
             shape.getRendererService().render(g, shape, false);
-            appService.setView(this);
+
         }
     }
 }
